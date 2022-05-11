@@ -245,10 +245,11 @@
     &::after {
       content: "";
       position: absolute;
-      left: 0;
+      right: 0;
       bottom: 0; 
       width: 0;
       height: 2px;
+      display: block;
       background-color: $c-light;
       transition: width .3s;
 
@@ -267,7 +268,6 @@
 
     &.active {
       &::after {
-        display: block;
         width: 100%;
       };
     }
@@ -279,6 +279,8 @@
 
       &::after {
         width: 100%;
+        left: 0;
+        right: auto;
         opacity: 1;
         background-color: $c-purple;
       }
