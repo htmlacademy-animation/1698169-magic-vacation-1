@@ -5,6 +5,22 @@
     .social-block__list {
       opacity: 1;
       pointer-events: auto;
+      li {
+        &:nth-child(2) {
+          .social-block__link {
+            transition-delay: .15s;
+          }
+        }
+        &:nth-child(3) {
+          .social-block__link {
+            transition-delay: .25s;
+          }
+        }
+        .social-block__link {
+          opacity: 1;
+          transition: opacity .35s ease-in, color .3s ease-in, background-color .3s ease-in, border-color .3s ease-in;
+        }
+      };
     }
   }
 }
@@ -17,6 +33,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition: color .3s ease-in;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +52,7 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    transition: width .3s ease-in, height .3s ease-in, background-color .2s ease-in, border-color .2s ease-in;
   }
 
   svg {
@@ -168,6 +186,7 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  opacity: 0;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
