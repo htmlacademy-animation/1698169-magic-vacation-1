@@ -1,3 +1,8 @@
+@mixin animation_header {
+  opacity: 0;
+  transition: opacity $a-normal-duration $a-header-timing-function;
+}
+
 .page-header {
   position: fixed;
   top: 0;
@@ -35,6 +40,11 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  opacity: 0;
+  transform: translateX(-1rem);
+  transition-property: opacity, transform;
+  transition-duration: $a-normal-duration;
+  transition-timing-function: $a-header-timing-function;
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -81,6 +91,7 @@
   background-color: $c-light;
   border-radius: 50%;
   z-index: 1;
+  @include animation_header();
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: block;
@@ -177,6 +188,7 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
+  @include animation_header();
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -268,7 +280,8 @@
 
     &.active {
       &::after {
-        width: 100%;
+        width: 0;
+        right: 0;
       };
     }
 
@@ -303,5 +316,27 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+.loaded {
+  .page-header__menu, .page-header__toggler,.page-header__logo {
+    opacity: 1;
+  }
+
+  .page-header{
+    a{
+      &.active {
+        &::after {
+          width: 100%;
+          left: 0;
+          right: auto
+        };
+      }
+    }
+  }
+
+  .page-header__logo, .page-header__toggler {
+    transform: translateX(0);
   }
 }
