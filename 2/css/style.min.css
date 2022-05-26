@@ -2089,6 +2089,8 @@ img {
 .page-header__nav {
   display: flex;
   align-items: center;
+  transform: translateX(1rem);
+  transition: transform 0.35s cubic-bezier(0, 0.5, 0.65, 1);
 }
 @media (max-width: 1024px) and (orientation: portrait) {
   .page-header__nav {
@@ -2271,7 +2273,7 @@ img {
   }
 }
 
-.loaded .page-header__menu, .loaded .page-header__toggler, .loaded .page-header__logo {
+.loaded .page-header__menu, .loaded .page-header__logo {
   opacity: 1;
 }
 .loaded .page-header a.active::after {
@@ -2279,7 +2281,7 @@ img {
   left: 0;
   right: auto;
 }
-.loaded .page-header__logo, .loaded .page-header__toggler {
+.loaded .page-header__logo, .loaded .page-header__nav {
   transform: translateX(0);
 }
 
@@ -3984,7 +3986,9 @@ img {
   height: 4rem;
   color: #5f458c;
   border-radius: 50%;
-  transition: color 0.3s ease-in;
+  transition-property: width, color;
+  transition: 0.3s ease-in;
+  transform: scale(1);
 }
 .social-block__toggler:focus {
   outline: none;
@@ -4023,6 +4027,7 @@ img {
 }
 .social-block__toggler:hover, .social-block--active .social-block__toggler {
   color: #a67ee5;
+  transform: scale(1.1);
 }
 .social-block__toggler:hover::before, .social-block--active .social-block__toggler::before {
   width: 112.5%;
@@ -4212,9 +4217,38 @@ img {
 }
 
 .loaded .social-block__toggler::before {
+  animation-name: bounce;
+  animation-duration: 0.4s;
   width: 100%;
   height: 100%;
   border: 2px solid #ffffff;
+}
+
+@keyframes bounce {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  20% {
+    width: 40%;
+    height: 40%;
+  }
+  40% {
+    width: 80%;
+    height: 80%;
+  }
+  60% {
+    width: 100%;
+    height: 100%;
+  }
+  80% {
+    width: 120%;
+    height: 120%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.min.css.map*/
