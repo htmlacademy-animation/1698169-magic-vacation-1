@@ -141,6 +141,8 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  transform: translateX(1rem);
+  transition: transform $a-normal-duration $a-header-timing-function;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -320,7 +322,7 @@
 }
 
 .loaded {
-  .page-header__menu, .page-header__toggler,.page-header__logo {
+  .page-header__menu ,.page-header__logo {
     opacity: 1;
   }
 
@@ -336,7 +338,7 @@
     }
   }
 
-  .page-header__logo, .page-header__toggler {
+  .page-header__logo, .page-header__nav {
     transform: translateX(0);
   }
 }
