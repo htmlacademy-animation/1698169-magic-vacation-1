@@ -35,9 +35,8 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
-  transition-property: width, color;
-  transition: .3s ease-in;
-  transform: scale(1);
+  transition-property: color;
+  transition: .3s ease-in 0.1s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -48,15 +47,26 @@
   }
 
   &::before {
-    @include center;
+    position: absolute;
+    top: 0;
+    left: 0;
     content: "";
-    width: 0;
-    height: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background-color: $c-light;
     z-index: -1;
-    transition: width .3s ease-in, height .3s ease-in, background-color .2s ease-in, border-color .2s ease-in;
+    transform: scale(1);
+    transition: transform .3s ease-in, background-color .2s ease-in, border-color .2s ease-in;
   }
+  .loaded & {
+    &::before {
+      animation-name: bounce;
+      animation-duration: 0.4s;
+      border: 2px solid $c-light;
+    }
+  }
+
 
   svg {
     @include center;
@@ -68,11 +78,9 @@
   &:hover,
   .social-block--active & {
     color: $c-purple;
-    transform: scale(1.1);
   
     &::before {
-      width: 112.5%;
-      height: 112.5%;
+      transform: scale(1.1);
     }
   }
 
@@ -267,41 +275,19 @@
 }
 
 
-.loaded {
-  .social-block__toggler {
-    &::before {
-      animation-name:bounce;
-		  animation-duration: 0.4s;
-      width: 100%;
-      height: 100%;
-      border: 2px solid $c-light;
-    }
-  }
-}
+
 
 @keyframes bounce {
   0% 	{       
-    width: 0;
-    height: 0; 
-  }
-  20% 	{       
-    width: 40%;
-    height: 40%; 
+    transform: scale(0.4);
   }
   40% 	{       
-    width: 80%;
-    height: 80%; 
-  }
-  60% 	{       
-    width: 100%;
-    height: 100%; 
+    transform: scale(0.8)
   }
   80% 	{       
-    width: 120%;
-    height: 120%; 
+    transform: scale(1.2)  
   }
   100%		{       
-    width: 100%;
-    height: 100%; 
+    transform: scale(1)  
   }
 }
