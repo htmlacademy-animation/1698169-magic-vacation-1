@@ -18,7 +18,9 @@
         }
         .social-block__link {
           opacity: 1;
-          transition: opacity .35s ease-in, color .3s ease-in, background-color .3s ease-in, border-color .3s ease-in;
+          transition-property: opacity, color, background-color , border-color;
+          transition-duration: $a-normal-duration;
+          transition-timing-function: ease-in;
         }
       };
     }
@@ -33,7 +35,8 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
-  transition: color .3s ease-in;
+  transition-property: color;
+  transition: .3s ease-in 0.1s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -44,16 +47,26 @@
   }
 
   &::before {
-    @include center;
+    position: absolute;
+    top: 0;
+    left: 0;
     content: "";
     width: 100%;
     height: 100%;
     border-radius: 50%;
     background-color: $c-light;
-    border: 2px solid $c-light;
     z-index: -1;
-    transition: width .3s ease-in, height .3s ease-in, background-color .2s ease-in, border-color .2s ease-in;
+    transform: scale(1);
+    transition: transform .3s ease-in, background-color .2s ease-in, border-color .2s ease-in;
   }
+  .loaded & {
+    &::before {
+      animation-name: bounce;
+      animation-duration: 0.4s;
+      border: 2px solid $c-light;
+    }
+  }
+
 
   svg {
     @include center;
@@ -65,10 +78,9 @@
   &:hover,
   .social-block--active & {
     color: $c-purple;
-
+  
     &::before {
-      width: 112.5%;
-      height: 112.5%;
+      transform: scale(1.1);
     }
   }
 
@@ -259,5 +271,23 @@
         height: 10px;
       }
     }
+  }
+}
+
+
+
+
+@keyframes bounce {
+  0% 	{       
+    transform: scale(0.4);
+  }
+  40% 	{       
+    transform: scale(0.8)
+  }
+  80% 	{       
+    transform: scale(1.2)  
+  }
+  100%		{       
+    transform: scale(1)  
   }
 }
