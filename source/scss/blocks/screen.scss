@@ -46,6 +46,12 @@
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  transition-property: opacity, transform;
+  transition-duration: $a-normal-duration;
+  transition-timing-function: $a-header-timing-function;
+  transition-delay: .2s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
@@ -353,4 +359,11 @@
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+.loaded {
+  .screen__footer  {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
