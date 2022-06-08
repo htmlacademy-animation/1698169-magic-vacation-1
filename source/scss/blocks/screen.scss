@@ -311,6 +311,21 @@
   background-color: $c-dark;
 }
 
+.prizes-animation-background {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  background-color: $c-dark;
+  transform: translateY(100%);
+  transition: transform $a-normal-duration;
+}
+
+.prizes-animation-background.active {
+  transform: translateY(0);
+}
+
 .screen--game {
   position: relative;
   background-color: $c-dark;
