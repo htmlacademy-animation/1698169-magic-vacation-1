@@ -319,7 +319,7 @@
   height: 100vh;
   background-color: $c-dark;
   transform: translateY(100%);
-  transition: transform $a-normal-duration;
+  transition: transform  .75s;
 }
 
 .prizes-animation-background.active {

@@ -3,7 +3,7 @@ import throttle from 'lodash/throttle';
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 1000;
-    this.PRIZES_ANIMATION_BACKGROUND = 400
+    this.PRIZES_ANIMATION_BACKGROUND = 800
     this.scrollFlag = true;
     this.timeout = null;
 
