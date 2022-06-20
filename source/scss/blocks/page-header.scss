@@ -130,6 +130,7 @@
       width: 2.6rem;
       height: 2px;
       box-shadow: none;
+     
     }
 
     &::after {
@@ -142,7 +143,7 @@
   display: flex;
   align-items: center;
   transform: translateX(1rem);
-  transition: transform $a-normal-duration $a-header-timing-function;
+  transition: transform .1s $a-header-timing-function;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -322,7 +323,7 @@
 }
 
 .loaded {
-  .page-header__menu ,.page-header__logo {
+  .page-header__menu ,.page-header__logo, .page-header__toggler {
     opacity: 1;
   }
 
@@ -338,7 +339,7 @@
     }
   }
 
-  .page-header__logo, .page-header__nav {
+  .page-header__logo{
     transform: translateX(0);
   }
 }
