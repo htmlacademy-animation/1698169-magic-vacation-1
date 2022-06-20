@@ -1,28 +1,16 @@
 .social-block {
   position: relative;
 
+  .page-header--menu-opened & {
+    .social-block__link {
+      opacity: 1;
+    }
+  }
+
   &:hover {
     .social-block__list {
       opacity: 1;
       pointer-events: auto;
-      li {
-        &:nth-child(2) {
-          .social-block__link {
-            transition-delay: .15s;
-          }
-        }
-        &:nth-child(3) {
-          .social-block__link {
-            transition-delay: .25s;
-          }
-        }
-        .social-block__link {
-          opacity: 1;
-          transition-property: opacity, color, background-color , border-color;
-          transition-duration: $a-normal-duration;
-          transition-timing-function: ease-in;
-        }
-      };
     }
   }
 }
@@ -170,6 +158,26 @@
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
+
+    li {
+      &:nth-child(2) {
+        .social-block__link {
+          transition-delay: .15s;
+        }
+      }
+      &:nth-child(3) {
+        .social-block__link {
+          transition-delay: .25s;
+        }
+      }
+      
+      .social-block__link {
+        opacity: 1;
+        transition-property: opacity, color, background-color , border-color;
+        transition-duration: $a-normal-duration;
+        transition-timing-function: ease-in;
+      }
+    };
   }
 
   li {
